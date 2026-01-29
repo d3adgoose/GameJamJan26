@@ -1,19 +1,42 @@
 using UnityEngine;
 
-public enum SymbolEffect
+public enum SymbolCategory
 {
-    Add,
-    Subtract,
+    Value,          // +1, -1, +2, -2, +0
+    NextModifier,   // invert next, duplicate next, multiply next, nullify next
+    TotalModifier   // reset (×0), future-proofing
+}
+
+public enum NextSymbolEffect
+{
+    None,
+    Invert,
+    Duplicate,
     Multiply,
-    Negate
+    Nullify
+}
+
+public enum TotalEffect
+{
+    None,
+    Reset
 }
 
 [CreateAssetMenu(menuName = "TheMask/Symbol")]
 public class SymbolSO : ScriptableObject
 {
-    public string symbolName;
+    [Header("Visual")]
     public Sprite symbolSprite;
 
-    public SymbolEffect effect;
+    [Header("Category")]
+    public SymbolCategory category;
+
+    [Header("Value (Value Symbols Only)")]
     public int value;
+
+    [Header("Next Symbol Effect")]
+    public NextSymbolEffect nextEffect;
+
+    [Header("Total Effect")]
+    public TotalEffect totalEffect;
 }

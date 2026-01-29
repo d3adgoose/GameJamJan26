@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa8448cd28ec4a08b1998b35bda1520, type: 3}
-  m_Name: MaskHappy
+  m_Script: {fileID: 11500000, guid: f72f440845a9a43209e327847ebf0a10, type: 3}
+  m_Name: HappySentence
   m_EditorClassIdentifier: 
-  maskName: 
-  minValue: 1
-  maxValue: 999
-  maskSprite: {fileID: 0}
+  symbols:
+  - {fileID: 11400000, guid: cb38687bf312a48b3a9c822a8871d704, type: 2}
+  - {fileID: 11400000, guid: c0c116d105fc446a4a20f05cd1fafd5d, type: 2}

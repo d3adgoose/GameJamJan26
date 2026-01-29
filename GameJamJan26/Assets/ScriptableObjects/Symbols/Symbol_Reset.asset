@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3aa8448cd28ec4a08b1998b35bda1520, type: 3}
-  m_Name: MaskHappy
+  m_Script: {fileID: 11500000, guid: ea3d572c6231b4b4eb208b228a9955d8, type: 3}
+  m_Name: Symbol_Reset
   m_EditorClassIdentifier: 
-  maskName: 
-  minValue: 1
-  maxValue: 999
-  maskSprite: {fileID: 0}
+  symbolSprite: {fileID: 0}
+  category: 2
+  value: 0
+  nextEffect: 0
+  totalEffect: 0

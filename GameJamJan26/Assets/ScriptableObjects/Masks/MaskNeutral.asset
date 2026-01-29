@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: MaskNeutral
   m_EditorClassIdentifier: 
   maskName: 
+  minValue: -1
+  maxValue: 1
   maskSprite: {fileID: 0}
