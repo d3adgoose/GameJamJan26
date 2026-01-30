@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b6c9875aff0af4481acd152d96d5bb, type: 3}
-  m_Name: NeutralSentence
+  m_Script: {fileID: 11500000, guid: 9539d4267a61c6146a3e7392d998562c, type: 3}
+  m_Name: CommonAreaSO
   m_EditorClassIdentifier: 
-  symbols: []
+  levels: []
+  levelToLoad: 

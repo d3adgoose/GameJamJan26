@@ -1,6 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaSO
+[CreateAssetMenu(menuName = "TheMask/Area")]
+public class AreaSO : ScriptableObject
 {
-    
+    public List<LevelSO> levels;
+    public string levelToLoad;
 }

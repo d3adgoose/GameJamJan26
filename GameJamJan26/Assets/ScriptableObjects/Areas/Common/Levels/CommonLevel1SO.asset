@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83b6c9875aff0af4481acd152d96d5bb, type: 3}
-  m_Name: NeutralSentence
+  m_Script: {fileID: 11500000, guid: fb332490dd7c3c54bbece12feed42ad4, type: 3}
+  m_Name: CommonLevel1SO
   m_EditorClassIdentifier: 
-  symbols: []
+  sentences: []

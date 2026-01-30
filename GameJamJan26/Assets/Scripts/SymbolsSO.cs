@@ -39,4 +39,7 @@ public class SymbolSO : ScriptableObject
 
     [Header("Total Effect")]
     public TotalEffect totalEffect;
+
+
+    // function for effects?
 }

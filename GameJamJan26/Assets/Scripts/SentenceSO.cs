@@ -5,4 +5,5 @@ using System.Collections.Generic;
 public class SentenceSO : ScriptableObject
 {
     public List<SymbolSO> symbols;
+    public MaskType correctMask;
 }
