@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: UnhappySentence
   m_EditorClassIdentifier: 
   symbols:
-  - {fileID: 11400000, guid: ceb4956c6118d4594a0504a591a978c9, type: 2}
-  - {fileID: 11400000, guid: c0c116d105fc446a4a20f05cd1fafd5d, type: 2}
+  - {fileID: 11400000, guid: bd4417af7f293406b9f0d36986930da4, type: 2}
+  - {fileID: 11400000, guid: b1f89939dca20418daf908acb936418d, type: 2}

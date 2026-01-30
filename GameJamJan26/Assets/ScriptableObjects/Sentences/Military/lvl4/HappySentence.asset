@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: HappySentence
   m_EditorClassIdentifier: 
   symbols:
-  - {fileID: 11400000, guid: 427b4137f82204ad7811546c1c896655, type: 2}
+  - {fileID: 11400000, guid: ceb4956c6118d4594a0504a591a978c9, type: 2}
+  - {fileID: 11400000, guid: b1f89939dca20418daf908acb936418d, type: 2}
   - {fileID: 11400000, guid: cb38687bf312a48b3a9c822a8871d704, type: 2}
