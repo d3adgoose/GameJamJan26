@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: NeutralSentence
   m_EditorClassIdentifier: 
   symbols: []
-  correctMask: 0
+  correctMask: 2

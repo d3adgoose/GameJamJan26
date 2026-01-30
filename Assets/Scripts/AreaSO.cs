@@ -5,5 +5,5 @@ using UnityEngine;
 public class AreaSO : ScriptableObject
 {
     public List<LevelSO> levels;
-    public string levelToLoad;
+    public string nextAreaToLoad;
 }

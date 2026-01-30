@@ -1,10 +1,13 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum MaskType
 {
     Happy,
     Sad,
-    Neutral
+    Neutral,
+    None
 }
 
 public class GameController : MonoBehaviour
@@ -15,21 +18,6 @@ public class GameController : MonoBehaviour
     public AreaSO currentArea;
     private int level = 0;
     private int numCorrectResponses = 0;
-
-    /*    GameController: State and progression
-    Tracks conversation state
-        enum gameState
-        Speaking
-        Response
-    Tracks area and level state
-        List of AreaSOs
-        int level
-        LevelController levelController
-        Timer responseTime
-    Tracks correct response
-        int numCorrectResponses
-        UnityEvent wasCorrectMaskResponse
-*/
 
     private void Awake()
     {
@@ -45,30 +33,45 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        loadLevel(level);
+        startLevel(level);
     }
 
-    private void loadLevel(int levelIndex)
+    private void startLevel(int levelIndex)
     {
         // Load the level based on the current area and level index
+        Debug.Log("Current level is " + levelIndex);
         LevelSO levelToLoad = currentArea.levels[levelIndex];
-        conversationManager.randomlyChooseSentence(levelToLoad);
+        if (levelToLoad == null) 
+        {
+            Debug.LogError("Level not found in current area at index: " + levelIndex);
+            return;
+        }
+
+        conversationManager.setCurrentLevel(levelToLoad);
+        conversationManager.startSentence();
     }
 
-    /*   
-       High Level:  Sentence is given to player ? Player Responds with their mask to their NPC ? Correctness check ? Level result(continue/win/lose)
-       Sentence is given to player
-           X symbols displayed in a text bubble
-           Preset sentences that are randomly grabbed
-       Reply timer starts
-           Make a bit longer, not stressful
-       Player responds
-           UI appears automatically
-       Level result
-           Loss ? players answers incorrectly
-           Continue ? new sentence(back to number 1)
-           Win ? 3 correct answers
-               Go to next level/area if X levels completed
-    */
+    public void checkForLevelProgression()
+    {
+        numCorrectResponses++;
+        Debug.Log("Num correct responses is " + numCorrectResponses);
 
+        LevelSO currentLevel = currentArea.levels[level];
+        if (numCorrectResponses >= currentLevel.numCorrectResponsesToPass)
+        {
+            // If last level in area, load next area
+            if (level == currentArea.levels.Count - 1)
+            {
+                Debug.Log("Loading new area ");
+                SceneManager.LoadScene(currentArea.nextAreaToLoad);
+                return;
+            }
+
+            // Otherwise move onto the next level in the current area
+            Debug.Log("Moving onto next level");
+            level++;
+            numCorrectResponses = 0;
+            startLevel(level);
+        }
+    }
 }

@@ -7,12 +7,14 @@ public class MaskButton : MonoBehaviour
 
     private void Start()
     {
-        //conversationManager = FindFi
+        conversationManager = FindFirstObjectByType<ConversationManager>();
+        if (conversationManager == null)
+            Debug.LogError("ConversationManager not found in the scene.");
     }
 
     public void OnClick()
     {
-        // On click, send MaskType to ConversationManager
+        conversationManager.determineMaskResult(responseMask);
     }
 
     /*    MaskButton: Input for mask response

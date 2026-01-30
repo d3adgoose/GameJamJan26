@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41b202d555890094490875240b42e1e9, type: 3}
   m_Name: CommonLevel1SO
   m_EditorClassIdentifier: 
-  numCorrectResponsesToPass: 0
-  sentences: []
+  numCorrectResponsesToPass: 1
+  sentences:
+  - {fileID: 11400000, guid: de662e51cfa98ab4e9950d9d02249209, type: 2}
+  - {fileID: 11400000, guid: a5118b4f2c8c4c540b034fefac078293, type: 2}

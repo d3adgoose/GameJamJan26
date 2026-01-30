@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d686db0c092774fbc138ed71474b77, type: 3}
   m_Name: CommonAreaSO
   m_EditorClassIdentifier: 
-  levels: []
-  levelToLoad: 
+  levels:
+  - {fileID: 11400000, guid: f87177c8f6cd0244b8cc0cffb3fbdaef, type: 2}
+  - {fileID: 11400000, guid: 109d82ea7a9549d48b3fa5e93f53152b, type: 2}
+  nextAreaToLoad: TestArea
