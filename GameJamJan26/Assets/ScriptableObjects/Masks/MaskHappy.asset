@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MaskHappy
   m_EditorClassIdentifier: 
   maskName: 
-  minValue: 1
+  minValue: 2
   maxValue: 999
   maskSprite: {fileID: 0}

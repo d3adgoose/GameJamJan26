@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maskName: 
   minValue: -999
-  maxValue: -1
+  maxValue: -2
   maskSprite: {fileID: 0}
