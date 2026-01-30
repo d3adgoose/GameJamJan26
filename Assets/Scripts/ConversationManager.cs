@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class ConversationManager : MonoBehaviour
 {
+    [Header("Timer UI")]
     public Slider timerSlider;
+
+    [Header("Timer Settings")]
     public float responseTime = 5f;
 
     private Coroutine timerCoroutine;
@@ -20,21 +21,32 @@ public class ConversationManager : MonoBehaviour
     private void Awake()
     {
         excludedSentences = new List<SentenceSO>();
-        timerSlider.maxValue = responseTime;
-        timerSlider.value = responseTime;   
+
+        // Initialize timer UI safely
+        if (timerSlider != null)
+        {
+            timerSlider.maxValue = responseTime;
+            timerSlider.value = responseTime;
+        }
+        else
+        {
+            Debug.LogWarning("ConversationManager: timerSlider is not assigned in the Inspector.");
+        }
     }
 
     public void setCurrentLevel(LevelSO level)
     {
         currentLevel = level;
         excludedSentences.Clear();
+
+        StopTimer(); // safety case
     }
 
     public void startSentence()
     {
         if (currentLevel == null)
         {
-            Debug.LogError("randomlyChooseSentence called with null level.");
+            Debug.LogError("startSentence called with null level.");
             return;
         }
 
@@ -70,40 +82,67 @@ public class ConversationManager : MonoBehaviour
 
         // display to screen
         // timer
-/*        if (timerCoroutine != null)
+        
+        // Start / restart the response timer
+        StartTimer();
+    }
+
+    private void StartTimer()
+    {
+        StopTimer(); // prevent multiple timers running at once
+
+        if (timerSlider != null)
+        {
+            timerSlider.maxValue = responseTime;
+            timerSlider.value = responseTime;
+        }
+
+        timerCoroutine = StartCoroutine(ResponseTimerRoutine());
+    }
+
+    private void StopTimer()
+    {
+        if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
             timerCoroutine = null;
         }
-
-        timerSlider.maxValue = responseTime;
-        timerSlider.value = responseTime;
-        timerCoroutine = StartCoroutine(startResponseTimer());*/
     }
 
-    private IEnumerator startResponseTimer()
+    private IEnumerator ResponseTimerRoutine()
     {
         float remainingTime = responseTime;
+
         while (remainingTime > 0f)
         {
             remainingTime -= Time.unscaledDeltaTime;
-            timerSlider.value = Mathf.Max(0f, remainingTime);
+
+            if (timerSlider != null)
+            {
+                timerSlider.value = Mathf.Max(0f, remainingTime);
+            }
+
             yield return null;
         }
 
         // Mark coroutine as finished before calling the result handler
+        // timer finished
         timerCoroutine = null;
+
+        // Time out means: player gave no mask response
         determineMaskResult(MaskType.None);
     }
 
     public void determineMaskResult(MaskType mask)
     {
-/*        if (timerCoroutine != null)
-        {
-            StopCoroutine(timerCoroutine);
-            timerCoroutine = null;
-        }*/
+        // If the player answered, stop the timer immediately
+        StopTimer();
 
+        if (currentSentence == null)
+        {
+            Debug.LogWarning("determineMaskResult called but currentSentence is null.");
+            return;
+        }
         // Determine if the player's mask response is correct
         if (currentSentence.correctMask == mask)
         {
